@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>Minha Primeira App Flask</title>
+  <meta charset="UTF-8">
+  <title>Gerador de Legenda de Imagem</title>
 </head>
 <body>
-    <h1>Olá, Flask!</h1>
+  <h1>Envie uma imagem</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Gerar descrição</button>
+  </form>
+
+  {% if image_path %}
+    <h2>Imagem enviada:</h2>
+    <img src="{{ image_path }}" alt="Imagem enviada" width="300">
+    <h3>Descrição em português:</h3>
+    <p>{{ caption }}</p>
+  {% endif %}
 </body>
 </html>
